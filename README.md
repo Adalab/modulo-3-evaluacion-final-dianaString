@@ -15,16 +15,16 @@ El ejercicio consiste en desarrollar una página web con React de manera que se 
 - [X] Al escribir en el input, se filtran las películas.
 
 #### 3. Filtrado por año:
-- [ ] Añadir un select para filtrar por año.
-- [ ] Recopilar los años de las películas del listado.
-- [ ] Al selec. un año, solo aparecen las escenas que coincidan
-- [ ] Por defecto, al cargar la página, deben aparecer todos.
+- [X] Añadir un select para filtrar por año.
+- [X] Recopilar los años de las películas del listado.
+- [X] Al selec. un año, solo aparecen las escenas que coincidan
+- [X] Por defecto, al cargar la página, deben aparecer todos.
 
 #### 4. Componentes de la aplicación:
-- [ ] Comp. para los filtros.
-- [ ] Comp. para el listado (MovieSceneList).
-- [ ] Comp. para la tarjeta de cada escena del listado (MovieSceneItem).
-- [ ] Comp. para el detalle de cada escena del listado (MovieSceneDetail)
+- [X] Comp. para los filtros.
+- [X] Comp. para el listado (MovieSceneList).
+- [X] Comp. para la tarjeta de cada escena del listado (MovieSceneItem).
+- [X] Comp. para el detalle de cada escena del listado (MovieSceneDetail)
 
 #### 5. Componentes de la aplicación:
 - [ ] Al hacer clic sobre una tarjeta aparece con más info en pantalla completa. (No cargar encima del resto, intercambiar componentes)

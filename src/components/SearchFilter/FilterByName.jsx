@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-const FilterByName = ({ handleNameChange, filteredMovie }) => {
+const FilterByName = ({ handleNameChange, nameFilter }) => {
     const handleInput = (ev) => {
         handleNameChange(ev.target.value);
     };
@@ -13,7 +13,7 @@ const FilterByName = ({ handleNameChange, filteredMovie }) => {
                 name="movieName"
                 id="movieName"
                 onChange={handleInput}
-                value={filteredMovie}
+                value={nameFilter}
             />
         </>
     )
