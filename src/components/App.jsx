@@ -1,41 +1,51 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState } from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import { useLocation, matchPath } from 'react-router';
 import callToApi from '../services/api';
 import MovieSceneList from './MoviesScene/MovieSceneList';
+import MovieSceneDetail from './MoviesScene/MovieSceneDetail';
 import Form from './SearchFilter/Form';
 import '../styles/App.scss';
 
 function App() {
 
 	// Variables de estado
-	const [moviesList, setMoviesList] = useState([]); 
-	const [nameFilter, setNameFilter] = useState(''); 
-	const [yearFilter, setYearFilter] = useState(''); 
+	const [sceneList, setSceneList] = useState([]);
+	const [nameFilter, setNameFilter] = useState('');
+	const [yearFilter, setYearFilter] = useState('');
 
 	// Variables normales
-	const LINK = "https://owen-wilson-wow-api.onrender.com/wows/random?results=50";
+	const LINK = 'https://owen-wilson-wow-api.onrender.com/wows/random?results=50';
+	const { pathname } = useLocation();
+	console.log('pathname', pathname)
+	const routeData = matchPath('/scene/:id', pathname);
+	console.log('routeData', routeData)
+	const sceneId = routeData !== null ? routeData.params.id : '';
 
-	const filteredMovies = moviesList
-	.filter(movie => movie.name.toLowerCase().includes(nameFilter.toLowerCase()))
-	.filter(movie => {
-		if (yearFilter === '' || yearFilter === 'all'){
-			return true;
-		} else {
-			return yearFilter === movie.year.toString();
-		}
-	});
+	const sceneData = sceneList.find((scene) => scene.id === sceneId);
 
-	const sortedUniqueYears = [...new Set(moviesList
-		.map(movie => movie.year))]
-			.sort((a, b) => a - b);
+	const filteredScenes = sceneList
+		.filter(scene => scene.name.toLowerCase().includes(nameFilter.toLowerCase()))
+		.filter(scene => {
+			if (yearFilter === '' || yearFilter === 'all') {
+				return true;
+			} else {
+				return yearFilter === scene.year.toString();
+			}
+		});
+
+	const sortedUniqueYears = [...new Set(sceneList
+		.map(scene => scene.year))]
+		.sort((a, b) => a - b);
 
 	/* console.log(sortedUniqueYears); */
 
 	// API
 	useEffect(() => {
-		callToApi(LINK).then((moviesData) => {
-			setMoviesList(moviesData);
-			/* console.log(moviesData); */
+		callToApi(LINK).then((scenesData) => {
+			setSceneList(scenesData);
+			/* console.log(scenesData); */
 		});
 	}, []);
 
@@ -52,8 +62,8 @@ function App() {
 	return (
 		<div>
 			<header>
-				<h1>Owen Wilson's "Wow"</h1>
-				<Form 
+				<a href=""><h1>Owen Wilson's "Wow"</h1></a>
+				<Form
 					nameFilter={nameFilter}
 					handleNameChange={handleNameChange}
 					yearFilter={yearFilter}
@@ -62,7 +72,32 @@ function App() {
 				/>
 			</header>
 			<main>
-				<MovieSceneList moviesList={filteredMovies} />
+				<Routes>
+					<Route
+						path="/"
+						element={
+							<>
+								<MovieSceneList sceneList={filteredScenes} />
+							</>
+						}
+					/>
+					<Route
+						path="/scene/:id"
+						element={
+							<>
+								{sceneData ? (
+									<MovieSceneDetail scene={sceneData} />
+								) : (
+									<>
+										<img src="https://placehold.co/400x600?text=Ooops!" alt="Ooops!" />
+										<p>Scene not found</p>
+									</>
+								)}
+								<Link to="/">Back</Link>
+							</>
+						}
+					/>
+				</Routes>
 			</main>
 			<footer>
 				<p>@dianastring 2023</p>

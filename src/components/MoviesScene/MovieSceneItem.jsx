@@ -1,13 +1,16 @@
 /* eslint-disable react/prop-types */
-const MovieSceneItem = ({ movie }) => {
+import { Link } from "react-router-dom";
+
+const MovieSceneItem = ({ scene }) => {
+
     return (
         <>
-            <a className="card-a" href="#">
-                <img src={movie.poster} alt={movie.name} />
-                <h3>{movie.name}</h3>
-                <p>{movie.year}</p>
-                <h2>{movie.phrase}</h2>
-            </a>
+            <Link to={`/scene/${scene.id}`} className="card" >
+                <img src={scene.poster} alt={scene.name} />
+                <h3>{scene.name}</h3>
+                <p>{scene.year}</p>
+                <h2>{scene.phrase}</h2>
+            </Link>
         </>
     );
 };

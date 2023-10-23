@@ -22,17 +22,17 @@ El ejercicio consiste en desarrollar una página web con React de manera que se 
 
 #### 4. Componentes de la aplicación:
 - [X] Comp. para los filtros.
-- [X] Comp. para el listado (MovieSceneList).
-- [X] Comp. para la tarjeta de cada escena del listado (MovieSceneItem).
-- [X] Comp. para el detalle de cada escena del listado (MovieSceneDetail)
+- [X] Comp. para el listado (SceneSceneList).
+- [X] Comp. para la tarjeta de cada escena del listado (SceneSceneItem).
+- [X] Comp. para el detalle de cada escena del listado (SceneSceneDetail)
 
 #### 5. Componentes de la aplicación:
-- [ ] Al hacer clic sobre una tarjeta aparece con más info en pantalla completa. (No cargar encima del resto, intercambiar componentes)
-- [ ] Usar rutas y React Router DOM
-- [ ] Mostrar: Nombre Película, Frase Completa, Director, Audio escena
+- [X] Al hacer clic sobre una tarjeta aparece con más info en pantalla completa. (No cargar encima del resto, intercambiar componentes)
+- [X] Usar rutas y React Router DOM
+- [X] Mostrar: Nombre Película, Frase Completa, Director, Audio escena
 
 #### 6. Detallitos de calidad:
-- [ ] No olvidar la etiqueta ```<form>``` englobando los inputs. 
+- [X] No olvidar la etiqueta ```<form>``` englobando los inputs. 
 - [ ] Impedir que el navegador recargue si se le da a la tecla "intro".
 - [ ] Si no hay película que coincida con la búsqueda, mostrar un mensaje del tipo *"No hay ninguna película que coincida con la palabra ____*"
 - [ ] El filtro debe funcionar independientem. de minúsculas y mayúsculas.
@@ -44,7 +44,7 @@ El ejercicio consiste en desarrollar una página web con React de manera que se 
 #### BONUS
 #### 7. Mejoras visuales:
 - [ ] Poner bonita la web
-- [ ] Agregar iconos a la informa. que se muestre en el detalle.
+- [ ] Agregar iconos a la informac. que se muestre en el detalle.
 - [ ] Usar grid para pintar el listado.
 - [ ] Añadir responsive para dispositivos móviles y tablets.
 

@@ -1,13 +1,13 @@
 import MovieSceneItem from './MovieSceneItem';
 
 /* eslint-disable react/prop-types */
-const MovieSceneList = ({ moviesList }) => {
+const MovieSceneList = ({ sceneList }) => {
     
     const renderMovieItems =()=> { 
 
-        return moviesList.map((movie, index) => (
+        return sceneList.map((scene, index) => (
             <li key={index}>
-                <MovieSceneItem movie={movie} />
+                <MovieSceneItem scene={scene} />
             </li>
         ));
         
