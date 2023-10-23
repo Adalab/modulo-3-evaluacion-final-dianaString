@@ -4,11 +4,13 @@ import MovieSceneItem from './MovieSceneItem';
 const MovieSceneList = ({ moviesList }) => {
     
     const renderMovieItems =()=> { 
+
         return moviesList.map((movie, index) => (
             <li key={index}>
                 <MovieSceneItem movie={movie} />
             </li>
         ));
+        
     }
 
     return (

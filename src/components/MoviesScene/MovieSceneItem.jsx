@@ -4,9 +4,9 @@ const MovieSceneItem = ({ movie }) => {
         <>
             <a className="card-a" href="#">
                 <img src={movie.poster} alt={movie.name} />
-                <p>{movie.name}</p>
+                <h3>{movie.name}</h3>
                 <p>{movie.year}</p>
-                <p>{movie.phrase}</p>
+                <h2>{movie.phrase}</h2>
             </a>
         </>
     );
