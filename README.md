@@ -11,8 +11,8 @@ El ejercicio consiste en desarrollar una página web con React de manera que se 
 - [X] Mostrar (al menos) Poster, Película, Frase Completa y Año.
 
 #### 2. Filtrado por película:
-- [ ] Añadir un input a la interfaz 'buscar por película'.
-- [ ] Al escribir en el input, se filtran las películas.
+- [X] Añadir un input a la interfaz 'buscar por película'.
+- [X] Al escribir en el input, se filtran las películas.
 
 #### 3. Filtrado por año:
 - [ ] Añadir un select para filtrar por año.
