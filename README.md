@@ -7,8 +7,8 @@ El ejercicio consiste en desarrollar una página web con React de manera que se 
 ### Objetivos:
 
 #### 1. Listado de escenas:
-- [ ] Incorporar la Api al código.
-- [ ] Mostrar (al menos) Poster, Película, Frase Completa y Año.
+- [X] Incorporar la Api al código.
+- [X] Mostrar (al menos) Poster, Película, Frase Completa y Año.
 
 #### 2. Filtrado por película:
 - [ ] Añadir un input a la interfaz 'buscar por película'.
