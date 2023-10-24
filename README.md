@@ -33,10 +33,10 @@ El ejercicio consiste en desarrollar una página web con React de manera que se 
 
 #### 6. Detallitos de calidad:
 - [X] No olvidar la etiqueta ```<form>``` englobando los inputs. 
-- [ ] Impedir que el navegador recargue si se le da a la tecla "intro".
-- [ ] Si no hay película que coincida con la búsqueda, mostrar un mensaje del tipo *"No hay ninguna película que coincida con la palabra ____*"
-- [ ] El filtro debe funcionar independientem. de minúsculas y mayúsculas.
-- [ ] Al volver atrás tras ver el detalle, el input que se escribió se mantiene.
+- [X] Impedir que el navegador recargue si se le da a la tecla "intro".
+- [X] Si no hay película que coincida con la búsqueda, mostrar un mensaje del tipo *"No hay ninguna película que coincida con la palabra ____*"
+- [X] El filtro debe funcionar independientem. de minúsculas y mayúsculas.
+- [X] Al volver atrás tras ver el detalle, el input que se escribió se mantiene.
 
 
 <br>

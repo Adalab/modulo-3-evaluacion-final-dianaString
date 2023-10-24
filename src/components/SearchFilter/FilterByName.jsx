@@ -11,6 +11,7 @@ const FilterByName = ({ handleNameChange, nameFilter }) => {
             <input
                 type="text"
                 name="movieName"
+                placeholder="Cars"
                 id="movieName"
                 onChange={handleInput}
                 value={nameFilter}

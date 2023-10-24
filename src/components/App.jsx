@@ -18,9 +18,9 @@ function App() {
 	// Variables normales
 	const LINK = 'https://owen-wilson-wow-api.onrender.com/wows/random?results=50';
 	const { pathname } = useLocation();
-	console.log('pathname', pathname)
+	//console.log('pathname', pathname)
 	const routeData = matchPath('/scene/:id', pathname);
-	console.log('routeData', routeData)
+	//console.log('routeData', routeData)
 	const sceneId = routeData !== null ? routeData.params.id : '';
 
 	const sceneData = sceneList.find((scene) => scene.id === sceneId);
@@ -39,13 +39,11 @@ function App() {
 		.map(scene => scene.year))]
 		.sort((a, b) => a - b);
 
-	/* console.log(sortedUniqueYears); */
-
 	// API
 	useEffect(() => {
-		callToApi(LINK).then((scenesData) => {
-			setSceneList(scenesData);
-			/* console.log(scenesData); */
+		callToApi(LINK).then((scenesDataApi) => {
+			setSceneList(scenesDataApi);
+			/* console.log(scenesDataApi); */
 		});
 	}, []);
 
@@ -77,7 +75,12 @@ function App() {
 						path="/"
 						element={
 							<>
-								<MovieSceneList sceneList={filteredScenes} />
+								{(filteredScenes.length !== 0) ? (<MovieSceneList sceneList={filteredScenes} />)
+									: (<>
+										<img src="https://placehold.co/400x600?text=Ooops!" alt="Ooops!" />
+										<p>The movie <span>{nameFilter}</span> is not found, try another one.</p>
+									</>)
+								}
 							</>
 						}
 					/>
@@ -85,14 +88,12 @@ function App() {
 						path="/scene/:id"
 						element={
 							<>
-								{sceneData ? (
-									<MovieSceneDetail scene={sceneData} />
-								) : (
-									<>
+								{sceneData ? (<MovieSceneDetail scene={sceneData} />) 
+									: (<>
 										<img src="https://placehold.co/400x600?text=Ooops!" alt="Ooops!" />
 										<p>Scene not found</p>
-									</>
-								)}
+									</>)
+								}
 								<Link to="/">Back</Link>
 							</>
 						}

@@ -5,7 +5,7 @@ import FilterByYear from './FilterByYear';
 const Form = ({ nameFilter, handleNameChange, yearFilter, sortedUniqueYears, handleYearChange }) => {
 
     return (
-        <form onSubmit={(ev) => ev.preventDefault}>
+        <form onSubmit={(ev) => ev.preventDefault()}>
             <FilterByName
                 nameFilter={nameFilter}
                 handleNameChange={handleNameChange}
