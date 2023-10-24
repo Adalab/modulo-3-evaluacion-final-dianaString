@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { useLocation, matchPath } from 'react-router';
 import callToApi from '../services/api';
+import ls from "../services/localStorage";
 import MovieSceneList from './MovieScene/MovieSceneList';
 import MovieSceneDetail from './MovieScene/MovieSceneDetail';
 import Form from './SearchFilter/Form';
@@ -11,21 +12,19 @@ import '../styles/App.scss';
 function App() {
 
 	// Variables de estado
-	const [sceneList, setSceneList] = useState([]);
-	const [nameFilter, setNameFilter] = useState('');
+	const [scenesList, setScenesList] = useState(ls.get("scenes", []));
+	const [nameFilter, setNameFilter] = useState(ls.get('search', ''));
 	const [yearFilter, setYearFilter] = useState('');
 
 	// Variables normales
-	const LINK = 'https://owen-wilson-wow-api.onrender.com/wows/random?results=50';
+	const API_LINK = 'https://owen-wilson-wow-api.onrender.com/wows/random?results=50';
+
 	const { pathname } = useLocation();
-	//console.log('pathname', pathname)
 	const routeData = matchPath('/scene/:id', pathname);
-	//console.log('routeData', routeData)
 	const sceneId = routeData !== null ? routeData.params.id : '';
+	const sceneData = scenesList.find((scene) => scene.id === sceneId);
 
-	const sceneData = sceneList.find((scene) => scene.id === sceneId);
-
-	const filteredScenes = sceneList
+	const filteredScenes = scenesList
 		.filter(scene => scene.name.toLowerCase().includes(nameFilter.toLowerCase()))
 		.filter(scene => {
 			if (yearFilter === '' || yearFilter === 'all') {
@@ -35,21 +34,27 @@ function App() {
 			}
 		});
 
-	const sortedUniqueYears = [...new Set(sceneList
+	const sortedUniqueYears = [...new Set(scenesList
 		.map(scene => scene.year))]
 		.sort((a, b) => a - b);
 
 	// API
 	useEffect(() => {
-		callToApi(LINK).then((scenesDataApi) => {
-			setSceneList(scenesDataApi);
-			/* console.log(scenesDataApi); */
-		});
-	}, []);
+		if(scenesList.length === 0) {
+			callToApi(API_LINK).then((scenesDataApi) => {
+				setScenesList(scenesDataApi);
+			});
+		}
+	}, [scenesList.length]);
+
+	useEffect(() => {
+		ls.set('scenes', scenesList);
+	}, [scenesList]);
 
 	// Handlers
 	const handleNameChange = (value) => {
 		setNameFilter(value);
+		ls.set('search', value);
 	};
 
 	const handleYearChange = (value) => {
@@ -75,13 +80,7 @@ function App() {
 						path="/"
 						element={
 							<>
-								{(filteredScenes.length === 0 && sceneList !== 0) ?
-									(<>
-										<img src="https://placehold.co/400x600?text=Ooops!" alt="Ooops!" />
-										<p>The movie <span>{nameFilter}</span> is not found, try another one.</p>
-									</>)
-									:  (<MovieSceneList sceneList={filteredScenes} />)
-								}
+								<MovieSceneList scenesList={filteredScenes} nameFilter={nameFilter}/>
 							</>
 						}
 					/>
@@ -89,7 +88,12 @@ function App() {
 						path="/scene/:id"
 						element={
 							<>
-								<MovieSceneDetail scene={sceneData} />
+								{sceneData !== undefined ? (<MovieSceneDetail scene={sceneData} />) 
+									: (<>
+										<img src="https://placehold.co/400x600?text=Ooops!" alt="Ooops!" />
+										<p>Scene not found</p>
+									</>)
+								}
 								<Link to="/" className="backBtn">Back</Link>
 							</>
 						}
@@ -97,7 +101,7 @@ function App() {
 				</Routes>
 			</main>
 			<footer className="footer">
-				<p>@dianastring 2023</p>
+				<p><a href="https://github.com/dianaString">@dianastring</a> 2023</p>
 			</footer>
 		</div>
 	);
