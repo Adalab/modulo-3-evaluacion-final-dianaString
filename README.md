@@ -43,21 +43,21 @@ El ejercicio consiste en desarrollar una página web con React de manera que se 
 
 #### BONUS
 #### 7. Mejoras visuales:
-- [ ] Poner bonita la web
-- [ ] Agregar iconos a la informac. que se muestre en el detalle.
-- [ ] Usar grid para pintar el listado.
-- [ ] Añadir responsive para dispositivos móviles y tablets.
+- [X] Poner bonita la web
+- [X] Agregar iconos a la informac. que se muestre en el detalle.
+- [X] Usar grid para pintar el listado.
+- [X] Añadir responsive para dispositivos móviles y tablets.
 
 #### 8. URL compatible
-- [ ] La URL del detalle de cada escena debe ser compatible: cada detalle debe tener su propia URL única.
-- [ ] Si se actualiza o recarga la página del navegador mientras se estaba viendo el detalle de una escena, el sistema debe ser capaz de recordar cuál era y volver a mostrarlo.
+- [X] La URL del detalle de cada escena debe ser compatible: cada detalle debe tener su propia URL única.
+- [X] Si se actualiza o recarga la página del navegador mientras se estaba viendo el detalle de una escena, el sistema debe ser capaz de recordar cuál era y volver a mostrarlo.
 
 ### Entrega
 *El límite de entrega es el **martes 24 de octubre a las 14:00**.*
 
 #### La evaluación solo se considerará terminada cuando:
-- [ ] Esté publicada en GitHub Pages y esté funcionando.
-- [ ] El enlace a GitHub Pages esté en la página página principal del repositorio, en la parte superior, al lado de la descripción.
+- [X] Esté publicada en GitHub Pages y esté funcionando.
+- [X] El enlace a GitHub Pages esté en la página página principal del repositorio, en la parte superior, al lado de la descripción.
 
 <br>
 

@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { useLocation, matchPath } from 'react-router';
 import callToApi from '../services/api';
-import MovieSceneList from './MoviesScene/MovieSceneList';
-import MovieSceneDetail from './MoviesScene/MovieSceneDetail';
+import MovieSceneList from './MovieScene/MovieSceneList';
+import MovieSceneDetail from './MovieScene/MovieSceneDetail';
 import Form from './SearchFilter/Form';
 import '../styles/App.scss';
 
@@ -59,7 +59,7 @@ function App() {
 	// HTML
 	return (
 		<div>
-			<header>
+			<header className="header">
 				<a href=""><h1>Owen Wilson's "Wow"</h1></a>
 				<Form
 					nameFilter={nameFilter}
@@ -69,17 +69,18 @@ function App() {
 					handleYearChange={handleYearChange}
 				/>
 			</header>
-			<main>
+			<main className="main">
 				<Routes>
 					<Route
 						path="/"
 						element={
 							<>
-								{(filteredScenes.length !== 0) ? (<MovieSceneList sceneList={filteredScenes} />)
-									: (<>
+								{(filteredScenes.length === 0 && sceneList !== 0) ?
+									(<>
 										<img src="https://placehold.co/400x600?text=Ooops!" alt="Ooops!" />
 										<p>The movie <span>{nameFilter}</span> is not found, try another one.</p>
 									</>)
+									:  (<MovieSceneList sceneList={filteredScenes} />)
 								}
 							</>
 						}
@@ -88,19 +89,14 @@ function App() {
 						path="/scene/:id"
 						element={
 							<>
-								{sceneData ? (<MovieSceneDetail scene={sceneData} />) 
-									: (<>
-										<img src="https://placehold.co/400x600?text=Ooops!" alt="Ooops!" />
-										<p>Scene not found</p>
-									</>)
-								}
-								<Link to="/">Back</Link>
+								<MovieSceneDetail scene={sceneData} />
+								<Link to="/" className="backBtn">Back</Link>
 							</>
 						}
 					/>
 				</Routes>
 			</main>
-			<footer>
+			<footer className="footer">
 				<p>@dianastring 2023</p>
 			</footer>
 		</div>
