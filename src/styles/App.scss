@@ -154,7 +154,7 @@ li div:hover {
 .div {
     color: red;
     line-height: 1.7rem;
-    height: 180px;
+    height: 240px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -175,7 +175,7 @@ li div:hover {
 }
 
 .div::after{
-    top: 180px;
+    top: 240px;
 }
 
 //detail

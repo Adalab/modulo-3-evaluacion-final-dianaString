@@ -60,7 +60,7 @@ function App() {
 	return (
 		<div>
 			<header className="header">
-				<a href=""><h1>Owen Wilson's "Wow"</h1></a>
+				<a href=""><h1>Owen Wilson's <span>"Wows"</span></h1></a>
 				<Form
 					nameFilter={nameFilter}
 					handleNameChange={handleNameChange}
